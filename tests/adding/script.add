@@ -1,0 +1,11 @@
+#!/usr/bin/env adding
+
+43.5
+
+# this should also be ignored
+5.43#this should be ignored
+
+  # so should this
+
+4 -10.43
++0.5
