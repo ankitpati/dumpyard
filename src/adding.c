@@ -1,11 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <errno.h>
 
-void parse_error(char *s)
+void die(char *message)
 {
-    fprintf(stderr, "%s", s);
-    exit(2);
+    if (errno)
+        perror(message);
+    else
+        fprintf(stderr, "ERROR: %s\n", message);
+    exit(errno);
 }
 
 int main(int argc, char **argv)
@@ -54,7 +58,7 @@ int main(int argc, char **argv)
             if (!numstr)
                 NUMSTR(c);
             else
-                parse_error("+/- can only appear at beginning of number.\n");
+                die("+/- can only appear at beginning of number.");
             break;
 
         case '.':
@@ -62,7 +66,7 @@ int main(int argc, char **argv)
             if (i == num_i)
                 NUMSTR(c);
             else
-                parse_error("Only one decimal point allowed in a number.\n");
+                die("Only one decimal point allowed in a number.");
             break;
 
         case '#':
@@ -86,7 +90,7 @@ int main(int argc, char **argv)
                 NUMSTR(c);
 
             else
-                parse_error("Only sign, numbers, and decimal point allowed.\n");
+                die("Only sign, numbers, and decimal point allowed.");
 
             break;
         }
