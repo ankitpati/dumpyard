@@ -1,6 +1,30 @@
 #!/usr/bin/env python3
 """
 PyPlayer
+
+Class should have the following attributes:
+
+    playlists: an initially empty list, holding the palylists that this player
+    has. Each palylist in this list is a list of strings where each string is a
+    track name.
+
+    selected_playlist: a list in self.playlists which is selected by user.
+    Initially it is None.
+
+    current_track: a string in selected_playlist which is the name of the track
+    that is currently being played. Initially it is None.
+
+    status: a string which is either 'off', 'on' 'stop', 'play'. Initially it
+    is set to 'off'.
+
+Sample Input
+
+['player0']
+[('turn_on', [0]), ('create_empty_playlist', [0]), ('select_playlist', [0, 0]), ('add_track', [0, 'Mon Amore']), ('add_track', [0, 'Yesterday']), ('play', [0, 1]), ('stop', [0])]
+
+Sample Output
+
+[status: on, playlists: [], selected_pl: None, current_track: None, (True, status: on, playlists: [[]], selected_pl: None, current_track: None), (True, status: on, playlists: [[]], selected_pl: [], current_track: None), (True, status: on, playlists: [['Mon Amore']], selected_pl: ['Mon Amore'], current_track: None), (True, status: on, playlists: [['Mon Amore', 'Yesterday']], selected_pl: ['Mon Amore', 'Yesterday'], current_track: None), (True, status: play, playlists: [['Mon Amore', 'Yesterday']], selected_pl: ['Mon Amore', 'Yesterday'], current_track: Yesterday), (True, status: stop, playlists: [['Mon Amore', 'Yesterday']], selected_pl: ['Mon Amore', 'Yesterday'], current_track: None)]
 """
 
 from ast import literal_eval
