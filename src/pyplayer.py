@@ -18,7 +18,7 @@ class PyPlayer:
 
         self.status = "off"
         self.playlists = []
-        self.selected_playlist = []
+        self.selected_playlist = None
         self.current_track = None
 
     def turn_on(self):
@@ -61,9 +61,7 @@ class PyPlayer:
                 or playlist_index >= len(self.playlists):
             return False
 
-        self.selected_playlist = []
-        self.playlists.append(self.selected_playlist)
-        self.playlists.remove([])
+        self.selected_playlist = self.playlists[playlist_index]
         return True
 
     def add_track(self, track_name):
@@ -83,7 +81,7 @@ class PyPlayer:
         """
         Play!
 
-        track_index: an integer rpresenting the index of a track in self.selected_playlist.
+        track_index: index of a track in self.selected_playlist
         """
 
         if self.status in ["off", "play"] \
@@ -91,7 +89,6 @@ class PyPlayer:
                 or track_index >= len(self.selected_playlist):
             return False
 
-        list(self.selected_playlist).append(self.current_track)
         self.current_track = self.selected_playlist[track_index]
         self.status = "play"
         return True
