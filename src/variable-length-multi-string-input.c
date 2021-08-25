@@ -13,7 +13,7 @@ char *get_string()
 
     for (;;) {
         if (n % STRING_CHUNK_SIZE == 0) {
-            temp = realloc(s, sizeof(*s) * (n + STRING_CHUNK_SIZE));
+            temp = realloc(s, sizeof(*temp) * (n + STRING_CHUNK_SIZE));
 
             if (temp == NULL) {
                 free(s);
@@ -47,7 +47,7 @@ char **get_string_array()
 
     for (;;) {
         if (n % STRING_CHUNK_SIZE == 0) {
-            temp = realloc(strings, sizeof(*strings) * (n + STRING_CHUNK_SIZE));
+            temp = realloc(strings, sizeof(*temp) * (n + STRING_CHUNK_SIZE));
 
             if (temp == NULL) {
                 for (i = 0; i < n; ++i) {
