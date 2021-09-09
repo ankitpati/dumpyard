@@ -44,6 +44,7 @@ char **get_string_array()
 
     n = 0;
     s = NULL;
+    strings = NULL;
 
     for (;;) {
         if (n % STRING_CHUNK_SIZE == 0) {
