@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+get_pid()
+{
+    ps -eo pid,args | \
+    grep -F "$1" | \
+    grep -vF grep | \
+    grep -vF "$0" | \
+    head -1 | \
+    tr -s ' ' | \
+    cut -d' ' -f2
+}
